@@ -7,15 +7,15 @@ var CHANGE_EVENT = "change";
 
 var payperiods = 	[{
 						id: 1,
-						name: "Period 1"
+						name: "1st Pay Check"
 					},
 					{
 						id: 2,
-						name: "Period 2"
+						name: "2nd Pay Check"
 					},
 					{
 						id: 3,
-						name: "Period 3"
+						name: "Contract"
 					}];
 
 var bills = 	[{
