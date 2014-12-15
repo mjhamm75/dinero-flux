@@ -27,6 +27,14 @@ var AppActions = {
 		BillsDispatcher.handleViewAction({
 			actionType: BillConstants.ADD_NEW_LIST
 		});
+	},
+
+	addBillToPayperiod: function(billId, payperiodId) {
+		BillsDispatcher.handleViewAction({
+			actionType: BillConstants.ADD_BILL_TO_LIST,
+			billId: billId,
+			payperiodId: payperiodId
+		});
 	}
 };
 

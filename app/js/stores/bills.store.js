@@ -2,6 +2,7 @@ var BillsDispatcher = require('../dispatcher/bills.dispatcher.js');
 var BillsConstants = require('../constants/bills.constants.js');
 var merge = require('react/lib/merge');
 var EventEmitter = require('events').EventEmitter;
+var _ = require('lodash');
 
 var CHANGE_EVENT = "change";
 
@@ -52,6 +53,12 @@ function _removeBill(billId) {
 	bills = result;
 }
 
+function _addBillToList(billId, payperiodId) {
+	var payperiod = _.findWhere(payperiods, {id: payperiodId});
+	var bill = _.findWhere(bills, {id: billId});
+	payperiod.push(bill);
+}
+
 var AppStore = merge(EventEmitter.prototype, {
 	emitChange: function() {
 		this.emit(CHANGE_EVENT);
@@ -92,6 +99,8 @@ var AppStore = merge(EventEmitter.prototype, {
 			case BillsConstants.ADD_NEW_LIST:
 				_addNewList();
 				break;
+			case BillsConstants.ADD_BILL_TO_LIST:
+				_addBillToList(action.billId, action.payperiodId);
 		}
 
 		AppStore.emitChange();

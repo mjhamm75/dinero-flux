@@ -38,7 +38,7 @@ var ListOfBills = React.createClass({
 					<td>{numeral(bill.totalAmount).format('0,0.00')}</td>
 					<td><button onClick={that._removeBill.bind(that, bill)} type="button" className="btn btn-circle"><i className="glyphicon glyphicon-remove"></i></button></td>
 					<td>
-						<AddBillDropDown bill={bill.id}/>
+						<AddBillDropDown billId={bill.id}/>
 					</td>
 				</tr>
 			);

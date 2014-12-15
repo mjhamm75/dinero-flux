@@ -1,3 +1,4 @@
+var BillsActions = require('../actions/bills.actions.js');
 var BillsStore = require('../stores/bills.store.js');
 var React = require('react');
 var DropdownButton = require('react-bootstrap').DropdownButton;
@@ -12,7 +13,7 @@ var AddBillDropdown = React.createClass({
 		return 	getPayPeriods();
 	},
 	handleSelect: function(eventKey) {
-		debugger;
+		BillsActions.addBillToPayperiod(this.props.billId, eventKey);
 	},
 	render: function() {
 		var payperiods = this.state.payperiods.map(function(payperiod) {
@@ -21,7 +22,7 @@ var AddBillDropdown = React.createClass({
 		return	<DropdownButton onSelect={this.handleSelect}>
 					{payperiods}
 					<MenuItem divider />
-					<MenuItem eventKey="3">Create New List</MenuItem>
+					<MenuItem eventKey="create">Create New List</MenuItem>
 				</DropdownButton>;
 	}
 });
