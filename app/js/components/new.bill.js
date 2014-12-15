@@ -7,12 +7,6 @@ function showNewBill() {
 }
 
 var NewBill = React.createClass({
-	getInitialState: function() {
-		return showNewBill();
-	},
-	componentWillMount: function() {
-		 BillsStore.addChangeListener(this._onChange);
-	},
 	_onChange: function() {
 		this.setState(showNewBill());
 	},
@@ -23,7 +17,7 @@ var NewBill = React.createClass({
 		this.refs.totalAmount.getDOMNode().value = "";
 	},
 
-	handleClick: function() {
+	_handleClick: function() {
 		var bill = {
 			name: this.refs.billName.getDOMNode().value,
 			monthlyAmount: this.refs.monthlyAmount.getDOMNode().value,
@@ -31,6 +25,14 @@ var NewBill = React.createClass({
 		};
 		BillsActions.addNewBill(bill);
 		this._clearForm();
+	},
+
+	componentWillMount: function() {
+		 BillsStore.addChangeListener(this._onChange);
+	},
+
+	getInitialState: function() {
+		return showNewBill();
 	},
 
 	render: function() {
@@ -52,7 +54,7 @@ var NewBill = React.createClass({
 						<label className="sr-only">Total Amount</label>
 						<input type="number" className="form-control" ref="totalAmount" placeholder="Total Amount" />
 					</div>
-					<button onClick={this.handleClick} type="submit" className="btn btn-success">Add Bill</button>
+					<button onClick={this._handleClick} type="submit" className="btn btn-success">Add Bill</button>
 				</form>;
 	}
 });
