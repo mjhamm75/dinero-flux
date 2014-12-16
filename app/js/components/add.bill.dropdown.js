@@ -13,7 +13,11 @@ var AddBillDropdown = React.createClass({
 		return 	getPayPeriods();
 	},
 	handleSelect: function(eventKey) {
-		BillsActions.addBillToPayperiod(this.props.billId, eventKey);
+		if(eventKey !== "create") {
+			BillsActions.addBillToPayperiod(this.props.billId, eventKey);
+		} else {
+			BillsActions.createPayperiod();
+		}
 	},
 	render: function() {
 		var payperiods = this.state.payperiods.map(function(payperiod) {

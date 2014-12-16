@@ -3,7 +3,7 @@ var BillsActions = require('./../actions/bills.actions.js');
 
 var AddPayPeriod = React.createClass({
 	handleClick: function() {
-		BillsActions.addNewList();
+		BillsActions.addNewPayperiod();
 	},
 	render: function() {
 		return <button onClick={this.handleClick} className = "btn btn-primary" >Add Pay Period< /button>;

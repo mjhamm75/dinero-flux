@@ -3,12 +3,6 @@ var BillsDispatcher = require('../dispatcher/bills.dispatcher.js');
 var BillConstants = require('../constants/bills.constants.js');
 
 var AppActions = {
-	showAddBill: function() {
-		BillsDispatcher.handleViewAction({
-			actionType: BillConstants.SHOW_ADD_BILL
-		});
-	},
-
 	addNewBill: function(bill) {
 		BillsDispatcher.handleViewAction({
 			actionType: BillConstants.ADD_NEW_BILL,
@@ -23,7 +17,13 @@ var AppActions = {
 		});
 	},
 
-	addNewList: function() {
+	showAddBill: function() {
+		BillsDispatcher.handleViewAction({
+			actionType: BillConstants.SHOW_ADD_BILL
+		});
+	},
+
+	addNewPayperiod: function() {
 		BillsDispatcher.handleViewAction({
 			actionType: BillConstants.ADD_NEW_LIST
 		});

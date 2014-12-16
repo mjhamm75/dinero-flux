@@ -56,6 +56,15 @@ function _removeBill(billId) {
 	bills = result;
 }
 
+function _addNewPayperiod() {
+	var payperiod = {
+		id: 5,
+		name: 'hello',
+		bills: []
+	};
+	payperiods.push(payperiod);
+}
+
 function _addBillToList(billId, payperiodId) {
 	var payperiod = _.findWhere(payperiods, {id: payperiodId});
 	var bill = _.findWhere(bills, {id: billId});
@@ -104,7 +113,7 @@ var AppStore = merge(EventEmitter.prototype, {
 				_removeBill(action.id);
 				break;
 			case BillsConstants.ADD_NEW_LIST:
-				_addNewList();
+				_addNewPayperiod();
 				break;
 			case BillsConstants.ADD_BILL_TO_LIST:
 				_addBillToList(action.billId, action.payperiodId);
