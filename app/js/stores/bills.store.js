@@ -87,6 +87,10 @@ var AppStore = merge(EventEmitter.prototype, {
 		return payperiods;
 	},
 
+	getBillsByPayperiodId: function(payperiodId) {
+		return _.findWhere(payperiods, {id: payperiodId}).bills;
+	},
+
 	dispatcherIndex: BillsDispatcher.register(function(payload) {
 		var action = payload.action;
 		switch(action.actionType) {
