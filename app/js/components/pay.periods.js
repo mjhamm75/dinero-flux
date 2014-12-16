@@ -23,7 +23,9 @@ var PayPeriods = React.createClass({
 
 	render: function() {
 		var payperiods = this.state.payperiods.map(function(payperiod) {
+			var total = 0;
 			var bills = getBillsByPayperiodId(payperiod.id).bills.map(function(bill) {
+				total += bill.monthlyAmount;
 				return (	<tr>
 							<td>{bill.name}</td>
 							<td>{bill.monthlyAmount}</td>
@@ -43,6 +45,11 @@ var PayPeriods = React.createClass({
 						</thead>
 						<tbody>
 							{bills}
+							<tr>
+								<td></td>
+								<td>{total}</td>
+								<td></td>
+							</tr>
 						</tbody>
 					</table>
 				</div>;
