@@ -8,15 +8,18 @@ var CHANGE_EVENT = "change";
 
 var payperiods = 	[{
 						id: 1,
-						name: "1st Pay Check"
+						name: "1st Pay Check",
+						bills: []
 					},
 					{
 						id: 2,
-						name: "2nd Pay Check"
+						name: "2nd Pay Check",
+						bills: []
 					},
 					{
 						id: 3,
-						name: "Contract"
+						name: "Contract",
+						bills: []
 					}];
 
 var bills = 	[{
@@ -56,7 +59,7 @@ function _removeBill(billId) {
 function _addBillToList(billId, payperiodId) {
 	var payperiod = _.findWhere(payperiods, {id: payperiodId});
 	var bill = _.findWhere(bills, {id: billId});
-	payperiod.push(bill);
+	payperiod.bills.push(bill);
 }
 
 var AppStore = merge(EventEmitter.prototype, {
