@@ -19,7 +19,7 @@ var App = React.createClass({
 					</div>
 					<div className="col-md-1"></div>
 					<div className="col-md-5">
-						<AddPayPeriod />
+
 						<PayPeriods />
 					</div>
 				</div>

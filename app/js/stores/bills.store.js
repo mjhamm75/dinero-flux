@@ -9,16 +9,19 @@ var CHANGE_EVENT = "change";
 var payperiods = 	[{
 						id: 1,
 						name: "1st Pay Check",
+						periodTotal: 2501,
 						bills: []
 					},
 					{
 						id: 2,
 						name: "2nd Pay Check",
+						periodTotal: 2501,
 						bills: []
 					},
 					{
 						id: 3,
 						name: "Contract",
+						periodTotal: 2200,
 						bills: []
 					}];
 

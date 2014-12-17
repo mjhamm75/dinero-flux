@@ -16,7 +16,7 @@ var AddBillDropdown = React.createClass({
 		if(eventKey !== "create") {
 			BillsActions.addBillToPayperiod(this.props.billId, eventKey);
 		} else {
-			BillsActions.createPayperiod();
+			BillsActions.addNewPayperiod();
 		}
 	},
 	render: function() {

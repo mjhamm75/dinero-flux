@@ -57,7 +57,7 @@ var ListOfBills = React.createClass({
 						<tbody>
 							{bills}
 							<tr>
-								<td></td>
+								<td>Total</td>
 								<td>{numeral(totalMonthly).format('$0,0.00')}</td>
 								<td>{numeral(totalOwed).format('$0,0.00')}</td>
 								<td></td>

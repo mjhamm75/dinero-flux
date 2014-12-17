@@ -35,6 +35,7 @@ var PayPeriods = React.createClass({
 
 			return <div className="slide-down">
 					<div className="table-due">{payperiod.name}</div>
+					<div>{payperiod.periodTotal}</div>
 					<table className="table">
 						<thead>
 							<tr>
@@ -46,7 +47,7 @@ var PayPeriods = React.createClass({
 						<tbody>
 							{bills}
 							<tr>
-								<td></td>
+								<td>Total</td>
 								<td>{total}</td>
 								<td></td>
 							</tr>
