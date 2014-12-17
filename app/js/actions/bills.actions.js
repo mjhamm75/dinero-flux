@@ -10,6 +10,13 @@ var AppActions = {
 		});
 	},
 
+	highlightBill: function(billId) {
+		BillsDispatcher.handleViewAction({
+			actionType: BillConstants.HIGHLIGHT_BILL,
+			billId: billId
+		});
+	},
+
 	removeBill: function(billId) {
 		BillsDispatcher.handleViewAction({
 			actionType: BillConstants.REMOVE_BILL,
@@ -20,6 +27,13 @@ var AppActions = {
 	showAddBill: function() {
 		BillsDispatcher.handleViewAction({
 			actionType: BillConstants.SHOW_ADD_BILL
+		});
+	},
+
+	unHighlightBill: function(billId) {
+		BillsDispatcher.handleViewAction({
+			actionType: BillConstants.UN_HIGHLIGHT_BILL,
+			billId: billId
 		});
 	},
 

@@ -25,8 +25,11 @@ var PayPeriods = React.createClass({
 		var payperiods = this.state.payperiods.map(function(payperiod) {
 			var total = 0;
 			var bills = getBillsByPayperiodId(payperiod.id).bills.map(function(bill) {
+				var highlight = {
+					'background-color': bill.highlight ? '#f5f5f5' : ''
+				};
 				total += bill.monthlyAmount;
-				return (	<tr>
+				return (	<tr style={highlight}>
 							<td>{bill.name}</td>
 							<td>{bill.monthlyAmount}</td>
 							<td>n/a</td>

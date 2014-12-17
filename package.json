@@ -30,5 +30,8 @@
     "bootstrap": "^3.3.1",
     "lodash": "^2.4.1",
     "react-bootstrap": "^0.13.0"
+  },
+  "scripts": {
+    "postinstall": "node"
   }
 }

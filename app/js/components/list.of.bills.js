@@ -16,6 +16,7 @@ var ListOfBills = React.createClass({
 	componentWillMount: function() {
 		 BillsStore.addChangeListener(this._onChange);
 	},
+
 	_onChange: function() {
 		this.setState(getBills());
 	},
@@ -24,15 +25,26 @@ var ListOfBills = React.createClass({
 		BillActions.removeBill(bill.id);
 	},
 
+	_highlightBill: function(billId) {
+		BillActions.highlightBill(billId);
+	},
+
+	_unHighlightBill: function(billId) {
+		BillActions.unHighlightBill(billId);
+	},
+
 	render: function() {
 		var that = this;
 		var totalOwed = 0;
 		var totalMonthly = 0;
 		var bills = this.state.bills.map(function(bill) {
+			var highlight = {
+				'background-color': bill.highlight ? '#f5f5f5' : ''
+			};
 			totalMonthly += parseFloat(bill.monthlyAmount);
 			totalOwed += !isNaN(parseFloat(bill.totalAmount)) ? parseFloat(bill.totalAmount): 0;
 			return (
-				<tr key={bill.id}>
+				<tr key={bill.id} style={highlight} onMouseOver={that._highlightBill.bind(that, bill.id)} onMouseOut={that._unHighlightBill.bind(that, bill.id)}>
 					<td>{bill.name}</td>
 					<td>{numeral(bill.monthlyAmount).format('0,0.00')}</td>
 					<td>{numeral(bill.totalAmount).format('0,0.00')}</td>
