@@ -1,5 +1,6 @@
 var React = require('react');
 var BillsStore = require('./../stores/bills.store.js');
+var BillActions = require('./../actions/bills.actions.js');
 
 function getPayPeriods(){
 	return {payperiods: BillsStore.getPayPeriods()};
@@ -21,7 +22,16 @@ var PayPeriods = React.createClass({
 		this.setState(getPayPeriods());
 	},
 
+	_highlightBill: function(billId) {
+		BillActions.highlightBill(billId);
+	},
+
+	_unHighlightBill: function(billId) {
+		BillActions.unHighlightBill(billId);
+	},
+
 	render: function() {
+		var that = this;
 		var payperiods = this.state.payperiods.map(function(payperiod) {
 			var total = 0;
 			var bills = getBillsByPayperiodId(payperiod.id).bills.map(function(bill) {
@@ -29,7 +39,7 @@ var PayPeriods = React.createClass({
 					'background-color': bill.highlight ? '#f5f5f5' : ''
 				};
 				total += bill.monthlyAmount;
-				return (	<tr style={highlight}>
+				return (	<tr style={highlight} onMouseOver={that._highlightBill.bind(that, bill.id)} onMouseOut={that._unHighlightBill.bind(that, bill.id)}>
 							<td>{bill.name}</td>
 							<td>{bill.monthlyAmount}</td>
 							<td>n/a</td>
@@ -52,6 +62,11 @@ var PayPeriods = React.createClass({
 							<tr>
 								<td>Total</td>
 								<td>{total}</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>Remainder</td>
+								<td>{payperiod.periodTotal - total}</td>
 								<td></td>
 							</tr>
 						</tbody>
